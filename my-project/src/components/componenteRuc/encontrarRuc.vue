@@ -16,13 +16,41 @@
           />
 
           <div class="input-group-append">
-            <button @click="buscarRuc" type="button" class="btn btn-secondary">
-              <i class="fas fa-search"></i>
+            <button @click="getRucInfo" type="button" class="btn btn-secondary">
+              Buscar
             </button>
           </div>
         </div>
         <div class="invalid-feedback">Por favor, ingresa tu RUC.</div>
       </div>
+    </div>
+
+    <div v-if="rucList.length">
+      <h3>Información del RUC:</h3>
+      <ul>
+        <li v-for="(info, index) in rucList" :key="index">
+          <div>
+            <p><strong>RUC:</strong> {{ info.ruc }}</p>
+            <p><strong>Nombre Comercial:</strong> {{ info.businessname }}</p>
+            <div v-if="info.subsidiaries && info.subsidiaries.length">
+              <h4>Sucursales:</h4>
+              <ul>
+                <li
+                  v-for="(subsidiary, sIndex) in info.subsidiaries"
+                  :key="sIndex"
+                >
+                  <p>
+                    <strong>Nombre Comercial:</strong>
+                    {{ subsidiary.commercial_name }}
+                  </p>
+                  <p><strong>Dirección:</strong> {{ subsidiary.address }}</p>
+                  <p><strong>Código:</strong> {{ subsidiary.code }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
