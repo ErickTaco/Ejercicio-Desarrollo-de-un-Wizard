@@ -108,6 +108,66 @@
       </div>
     </div>
   </div>
+
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Launch static backdrop modal
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            <p><strong>Nombre:</strong> {{ userInfo.name }}</p>
+            <p><strong>Apellido:</strong> {{ userInfo.lastname }}</p>
+            <p><strong>Teléfono:</strong> {{ userInfo.phone }}</p>
+            <p><strong>RUC:</strong> {{ userInfo.ruc }}</p>
+            <p><strong>Dirección:</strong> {{ userInfo.address }}</p>
+            <p>
+              <strong>Nombre Comercial:</strong> {{ userInfo.commercialname }}
+            </p>
+            <p><strong>Razón Social:</strong> {{ userInfo.businessname }}</p>
+            <p><strong>Código:</strong> {{ userInfo.code }}</p>
+            <p><strong>Correo Electrónico:</strong> {{ userInfo.email }}</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <style src="./encontrarRuc.css"></style>
 <script src="./encontrarRuc.js"></script>
