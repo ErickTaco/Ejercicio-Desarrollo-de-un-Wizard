@@ -9,6 +9,10 @@ export default {
       codigoValidado: false,
       codigo: "",
       formEnviado: false,
+      usuarios: [],
+      demoInfo: null,
+      feedback: false,
+      feedbackMessage: "",
     };
   },
   methods: {
@@ -26,8 +30,33 @@ export default {
           const response = await axios.get(
             "https://test.wanqara.com/api/send-code"
           );
-          console.log(response.data);
-          this.formEnviado = true;
+
+          console.log(response.data.status);
+          if (response.data.status == true) {
+            localStorage.setItem(
+              "usuario",
+              JSON.stringify({
+                nombre: this.nombre,
+                apellido: this.apellido,
+                telefono: this.telefono,
+              })
+            );
+
+            this.demoInfo = "Aquí va la información de la demo...";
+
+            this.feedbackMessage = "Hemos enviado con exito el codigo";
+
+            this.feedback = true;
+
+            setTimeout(() => {
+              this.feedback = false;
+              this.formEnviado = true;
+            }, 5000);
+          } else {
+            alert(
+              "No hemos podido enviar el codigo por favor intente de nuevo"
+            );
+          }
         } catch (error) {
           console.error("Error al enviar código:", error);
         }
@@ -40,9 +69,21 @@ export default {
           `https://test.wanqara.com/api/verify-code?code=${this.codigo}`
         );
         console.log(response.data);
-        this.$router.push("/Ruc");
+
+        this.demoInfo = "Aquí va la información de la demo...";
+
+        this.feedbackMessage = "Codigo Correcto";
+
+        this.feedback = true;
+
+        setTimeout(() => {
+          this.feedback = false;
+
+          this.$router.push("/Ruc");
+        }, 4000);
       } catch (error) {
         console.error("Error al verificar código:", error);
+        alert("Error al verificar código");
       }
     },
 

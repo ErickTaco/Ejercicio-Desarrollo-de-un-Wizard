@@ -78,8 +78,11 @@
       </div>
     </transition>
   </div>
+  <!-- Div para mostrar el feedback -->
+  <div v-if="feedback" class="feedback">
+    {{ feedbackMessage }}
+  </div>
 </template>
-
 <script src="./envioCodigo.js"></script>
 
 <style src="./envioCodigo.css"></style>
