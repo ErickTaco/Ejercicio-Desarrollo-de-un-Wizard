@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="fromRuc">
     <div class="container mt-5">
       <div
         class="card shadow-lg p-4 rounded-lg border-0 bg-light animate__animated animate__fadeIn"
@@ -48,6 +48,7 @@
                 id="input1"
                 class="form-control animate__animated animate__pulse"
                 readonly
+                required
               />
             </div>
             <div class="form-group d-flex align-items-center">
@@ -58,6 +59,8 @@
                   id="input2"
                   class="form-control animate__animated animate__pulse"
                   readonly
+                  required
+                  placeholder="Direccion"
                 />
               </div>
               <div>
@@ -86,7 +89,9 @@
                 v-model="input3"
                 id="input3"
                 class="form-control animate__animated animate__pulse"
+                placeholder="Nombre Comercial"
                 readonly
+                required
               />
             </div>
             <div class="form-group">
@@ -94,31 +99,26 @@
                 >Correo Electrónico</label
               >
               <input
-                v-model="ruc"
+                v-model="correoElectronico"
                 id="input4"
                 class="form-control animate__animated animate__pulse"
-                placeholder="Ingrese el RUC"
+                placeholder="Ingrese un Correo Electronico"
+                required
               />
             </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-block btn-shadow">
+          <button
+            type="submit"
+            class="btn btn-primary btn-block btn-shadow"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
             Crear Demo
           </button>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Button trigger modal -->
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#staticBackdrop"
-  >
-    Launch static backdrop modal
-  </button>
-
   <!-- Modal -->
   <div
     class="modal fade"
@@ -132,7 +132,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Tus Datos</h5>
           <button
             type="button"
             class="btn-close"
@@ -142,30 +142,46 @@
         </div>
         <div class="modal-body">
           <div class="modal-body">
-            <p><strong>Nombre:</strong> {{ userInfo.name }}</p>
-            <p><strong>Apellido:</strong> {{ userInfo.lastname }}</p>
-            <p><strong>Teléfono:</strong> {{ userInfo.phone }}</p>
-            <p><strong>RUC:</strong> {{ userInfo.ruc }}</p>
-            <p><strong>Dirección:</strong> {{ userInfo.address }}</p>
-            <p>
-              <strong>Nombre Comercial:</strong> {{ userInfo.commercialname }}
-            </p>
-            <p><strong>Razón Social:</strong> {{ userInfo.businessname }}</p>
-            <p><strong>Código:</strong> {{ userInfo.code }}</p>
-            <p><strong>Correo Electrónico:</strong> {{ userInfo.email }}</p>
+            <p><strong>Nombre:</strong> {{ nombre }}</p>
+            <p><strong>Apellido:</strong>{{ apellido }}</p>
+            <p><strong>Teléfono:</strong>{{ telefono }}</p>
+            <p><strong>RUC:</strong>{{ ruc }}</p>
+            <p><strong>Dirección:</strong>{{ input2 }}</p>
+            <p><strong>Nombre Comercial:</strong>{{ input3 }}</p>
+            <p><strong>Razón Social:</strong>{{ input1 }}</p>
+            <p><strong>Código:</strong>{{ selectedOption }}</p>
+            <p><strong>Correo Electrónico:</strong>{{ correoElectronico }}</p>
           </div>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cerrar
+          </button>
           <button
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-primary"
             data-bs-dismiss="modal"
+            @click="gracias"
           >
-            Close
+            Crear
           </button>
-          <button type="button" class="btn btn-primary">Understood</button>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- Modal -->
+
+  <div v-if="fin" class="container">
+    <div class="title">¡Te recordamos que tu DEMO ya fue creado!</div>
+    <div class="checkmark">✔️</div>
+    <div class="message">
+      Las credenciales y link de acceso fueron enviadas a tu correo electrónico
+      <strong>edison@novasolutions.com.ec</strong> también las podrás encontrar
+      en tu Whatsapp, verifica el spam de tu correo.
+    </div>
+    <div class="message">
+      Si necesitas ayuda puedes comunicarte al número
+      <strong>0985364973</strong>.
     </div>
   </div>
 </template>

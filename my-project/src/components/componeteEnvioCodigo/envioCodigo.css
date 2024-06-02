@@ -2,7 +2,8 @@
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -45,17 +46,17 @@
   top: 80%;
   left: 80%;
   transform: translate(-50%, -50%);
-  z-index: 9999; /* Asegura que el mensaje esté por encima de otros elementos */
-  background-color: #4caf50; /* Verde */
+  z-index: 9999;
+  background-color: #4caf50;
   color: white;
   text-align: center;
-  padding: 20px; /* Aumenta el padding para hacer el mensaje más grande */
-  border-radius: 10px; /* Aumenta el radio de la esquina para hacer el mensaje más redondeado */
-  animation: fadeOut 5s ease; /* Animación para desvanecer */
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeOut 5s ease;
 }
 
 .feedback-message {
-  font-size: 24px; /* Aumenta el tamaño del texto */
+  font-size: 24px;
 }
 
 @keyframes fadeOut {

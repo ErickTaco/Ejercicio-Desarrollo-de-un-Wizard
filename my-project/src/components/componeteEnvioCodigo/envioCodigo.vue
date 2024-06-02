@@ -78,7 +78,7 @@
       </div>
     </transition>
   </div>
-  <!-- Div para mostrar el feedback -->
+  <!--   mostrar el feedback -->
   <div v-if="feedback" class="feedback">
     {{ feedbackMessage }}
   </div>
