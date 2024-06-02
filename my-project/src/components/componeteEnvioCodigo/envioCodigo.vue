@@ -20,7 +20,6 @@
               @keypress="blockNumbersAndSpecialChars"
               required
             />
-            <div class="mensajeErrorNombre">Por favor, revisa tu nombre.</div>
           </div>
           <div class="form-group">
             <label for="apellido" class="form-label">Apellido:</label>
